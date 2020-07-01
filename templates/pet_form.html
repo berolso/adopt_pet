@@ -1,0 +1,19 @@
+<div class="container">
+  <form method="POST">
+    {{form.hidden_tag()}} {% for field in form if field.widget.input_type !=
+    'hidden'%}
+    <div class="form-group">
+      {%if field.name != 'available' %} {{field.label}}
+      {{field(class_='form-control')}} {%else%}
+      <h3>
+        {{ field.label(class="form-check-label")}} {{field(class_='form-check
+        form-check-inline')}}
+      </h3>
+      {%endif%} {% for error in field.errors%}
+      <span class="text-danger">{{ error }}</span>
+      {%endfor%}
+    </div>
+    {%endfor%}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

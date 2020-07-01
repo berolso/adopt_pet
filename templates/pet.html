@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %}{{pet.name}}{% endblock %} {% block
+content %}
+<div class="row">
+  <a href="/pets" class="btn btn-outline-primary m-2" role="button">Back to All Pets</a>
+</div>
+
+<div class="card m-2" style="width: 18rem;">
+  <img src="{{pet.photo_url}}" class="card-img-top" alt="{{pet.name}}" />
+  <div class="card-body">
+    <a href="/pets/{pet.id}}"><h1 class="card-title mb-0">{{pet.name}}</h1></a>
+    <h6 class="mb-0">
+      {%if pet.available%}
+      <span class="badge badge-success">Is available</span>
+      {%else%}
+      <span class="badge badge-danger">Is adopted</span>
+      {%endif%}
+      <h3 class="m-2 text-center">
+        {{pet.age}}yr old {{pet.species}}
+      </h3>
+      {%if pet.notes%}
+      <h6>Notes: {{pet.notes}}</h6>
+      {%endif%}
+    </h6>
+  </div>
+  <a href="/pets/{{pet.id}}/edit" class="btn btn-primary m-2" role="button">Edit {{pet.name}}</a>
+</div>
+
+{% endblock %}
